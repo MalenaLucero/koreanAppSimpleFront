@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js" type="text/Javascript"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Explore Korean with BTS</h1>
+    <div id="loading" class="show">
+        <p>Loading...</p>
+    </div>
+    <div id="selectContainer" class="hide">
+        <div class="inputContainer">
+            <input id="wordInput">  
+            <button onclick="inputRandomWord()">Random word</button>
+            <p id="invalidInput" class="hide">Input invalido</p>
+        </div>
+        <div class="selectsContainer">
+            <select id="sourceSelect"></select>
+            <select id="artistSelect"></select>
+            <select id="videoSelect"></select> 
+        </div>
+        <button id="searchButton" onclick="search()">Search</button>
+    </div>
+    <p id="searchUrl" class="hide"></p>
+    <div>
+        <div id="loadingResults" class="hide">
+            <p>Loading...</p>
+        </div>
+        <div id="searchResultContainer" class="hide"></div>
+        <div id="noResults" class="hide">
+            <p>No results</p>
+        </div>
+    </div>
+</body>
+</html>

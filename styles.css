@@ -1,0 +1,36 @@
+.inputContainer, .selectsContainer{
+    margin: 10px 0;
+}
+
+.inputContainer input{
+    padding: 5px;
+}
+
+.selectsContainer{
+    display: flex;
+}
+
+.resultTitle{
+    font-weight: bold;
+}
+
+.linesContainer{
+    margin: 15px 0;
+}
+
+.linesContainer p{
+    margin: 0;
+}
+
+select, button{
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
+}
