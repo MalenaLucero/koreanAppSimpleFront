@@ -65,7 +65,8 @@ search = () => {
     if(word.length === 0){
         showElement("invalidInput");
     } else {
-         showElement("loadingResults")
+        showElement("loadingResults");
+        hideElement("searchResultContainer");
         const artist = document.getElementById("artistSelect").value;
         const source = document.getElementById("sourceSelect").value.toLowerCase();
         const video = document.getElementById("videoSelect").value;
@@ -104,12 +105,15 @@ showSearchResult = (data) => {
             title.innerHTML = "Title: " + e.title;
             result.appendChild(title);
             Object.keys(e.lines).forEach(number => {
+                const position = document.createElement("p");
+                position.innerHTML = "line: " + number;
                 const koreanLine = document.createElement("p");
                 koreanLine.innerHTML = e.lines[number][0];
                 const englishLine = document.createElement("p");
                 englishLine.innerHTML = e.lines[number][1];
                 const linesContainer = document.createElement("div")
                 linesContainer.classList.add("linesContainer");
+                linesContainer.appendChild(position);
                 linesContainer.appendChild(koreanLine);
                 linesContainer.appendChild(englishLine);
                 result.appendChild(linesContainer);
