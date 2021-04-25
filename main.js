@@ -85,7 +85,8 @@ search = () => {
 showSearchUrl = (url) => {
     innerHTMLCleaner("searchUrl");
     const searchUrl = document.getElementById("searchUrl");
-    searchUrl.innerHTML = url;
+    searchUrl.innerHTML = "Endpoint: " + url;
+    searchUrl.style = "word-break: break-all";
     showElement("searchUrl");
 }
 
