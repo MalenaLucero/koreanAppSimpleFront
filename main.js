@@ -1,6 +1,6 @@
 const url = "https://koreanapp.herokuapp.com/api/public";
 
-initialize = () => {
+const initialize = () => {
     const sourceTypesFetch = fetch(url + "/sourceTypes");
     const videoTypesFetch = fetch(url + "/videoTypes");
     const artistsFetch = fetch(url + "/artist");
@@ -19,12 +19,15 @@ initialize = () => {
             hideElement("loading");
             showElement("selectContainer");
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)   
+            hideElement("loading");
+        })
 }
 
 initialize();
 
-populateSelect = (id, elements) => {
+const populateSelect = (id, elements) => {
     const select = document.getElementById(id);
     elements.forEach(e => {
         const option = document.createElement("option");
@@ -39,7 +42,7 @@ populateSelect = (id, elements) => {
     })
 }
 
-setSourceSelectOnChange = () => {
+const setSourceSelectOnChange = () => {
     const source = document.getElementById("sourceSelect");
     const video = document.getElementById("videoSelect");
     video.classList.add('hide');
@@ -52,14 +55,14 @@ setSourceSelectOnChange = () => {
     }
 }
 
-inputRandomWord = () => {
+const inputRandomWord = () => {
     const words = ["오늘", "우리", "누구", "사랑", "바다"];
     const word = words[Math.floor(Math.random()*words.length)];
     const input = document.getElementById("wordInput");
     input.value = word;
 }
 
-search = () => {
+const search = () => {
     hideElement("invalidInput");
     const word = document.getElementById("wordInput").value;
     if(word.length === 0){
@@ -82,7 +85,7 @@ search = () => {
     }
 }
 
-showSearchUrl = (url) => {
+const showSearchUrl = (url) => {
     innerHTMLCleaner("searchUrl");
     const searchUrl = document.getElementById("searchUrl");
     searchUrl.innerHTML = "Endpoint: " + url;
@@ -90,7 +93,7 @@ showSearchUrl = (url) => {
     showElement("searchUrl");
 }
 
-showSearchResult = (data) => {
+const showSearchResult = (data) => {
     console.log(data)
     innerHTMLCleaner("searchResultContainer");
     hideElement("noResults");
@@ -125,22 +128,22 @@ showSearchResult = (data) => {
     }
 }
 
-showElement = (id) =>{
+const showElement = (id) =>{
     const element = document.getElementById(id)
     element.classList.replace('hide', 'show')
 }
 
-hideElement = (id) =>{
+const hideElement = (id) =>{
     const element = document.getElementById(id)
     element.classList.replace('show', 'hide')
 }
 
-innerHTMLCleaner = (elementId) =>{
+const innerHTMLCleaner = (elementId) =>{
     const element = document.getElementById(elementId)
     element.innerHTML = ''
 }
 
-inputCleaner = (elementId) =>{
+const inputCleaner = (elementId) =>{
     const input = document.getElementById(elementId)
     input.value =''
 }
