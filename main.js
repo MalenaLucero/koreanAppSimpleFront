@@ -59,7 +59,11 @@ const inputRandomWord = () => {
     const words = ["오늘", "우리", "누구", "사랑", "바다"];
     const word = words[Math.floor(Math.random()*words.length)];
     const input = document.getElementById("wordInput");
-    input.value = word;
+    if(input.value === word) {
+        inputRandomWord();
+    } else {
+        input.value = word;
+    }
 }
 
 const search = () => {
