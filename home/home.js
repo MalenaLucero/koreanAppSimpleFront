@@ -1,31 +1,33 @@
 const url = "https://koreanapp.herokuapp.com/api/public";
 
-const initialize = () => {
-    const sourceTypesFetch = fetch(url + "/sourceTypes");
-    const videoTypesFetch = fetch(url + "/videoTypes");
-    const artistsFetch = fetch(url + "/artist");
+const getLocalStorageData = () => {
+    const data = JSON.parse(window.localStorage.getItem('koreanAppData'));
+    window.localStorage.removeItem('koreanAppData');
+    return data;
+} 
 
-    Promise.all([sourceTypesFetch, videoTypesFetch, artistsFetch])
-        .then(res => Promise.all(res.map(r => r.json())))
-        .then(res => {
-            const sourceTypes = res[0];
-            const videoTypes = res[1];
-            const artists = res[2];
-            artists.unshift("");
-            populateSelect("sourceSelect", sourceTypes);
-            populateSelect("videoSelect", videoTypes);
-            populateSelect("artistSelect", artists);
-            setSourceSelectOnChange();
-            hideElement("loading");
-            showElement("selectContainer");
-        })
-        .catch(err => {
-            console.log(err)   
-            hideElement("loading");
-        })
+const rawData = getLocalStorageData();
+
+const modifyData = (rawData) => {
+    const modifiedData = {...rawData};
+    const allArtists = { id: '', name: 'ALL' };
+    modifiedData.artists.unshift(allArtists);
+    return modifiedData;
 }
 
-initialize();
+const data = modifyData(rawData);
+
+window.onload = () => {
+    initialize();
+}
+
+const initialize = () => {
+    const { sourceTypes, videoTypes, artists } = data;
+    populateSelect("sourceSelect", sourceTypes);
+    populateSelect("videoSelect", videoTypes);
+    populateSelect("artistSelect", artists);
+    setSourceSelectOnChange();
+}
 
 const populateSelect = (id, elements) => {
     const select = document.getElementById(id);
@@ -45,17 +47,17 @@ const populateSelect = (id, elements) => {
 const setSourceSelectOnChange = () => {
     const source = document.getElementById("sourceSelect");
     const video = document.getElementById("videoSelect");
-    video.classList.add('hide');
     source.onchange = () => {
         if(source.value === 'VIDEO'){
-            video.classList.replace('hide', 'show');
+            video.disabled = false;
         } else {
-            video.classList.replace('show', 'hide');
+            video.disabled = true;
         }
     }
 }
 
 const inputRandomWord = () => {
+    hideElement("invalidInput");
     const words = ["오늘", "우리", "누구", "사랑", "바다"];
     const word = words[Math.floor(Math.random()*words.length)];
     const input = document.getElementById("wordInput");

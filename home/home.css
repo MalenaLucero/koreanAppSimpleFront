@@ -1,14 +1,79 @@
-.inputContainer, .selectsContainer{
-    margin: 10px 0;
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    width: 400px;
+}
+
+h1{
+    text-align: center;
+}
+
+/* INPUT CONTAINER */
+
+.inputContainer{
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .inputContainer input{
-    padding: 5px;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid var(--one);
 }
+
+.inputContainer button{
+    min-width: 100px;
+    margin-left: 10px;
+    padding: 0;
+}
+
+.inputContainer .invalidInput{
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: red;
+}
+
+/* SELECTS CONTAINER */
 
 .selectsContainer{
     display: flex;
+    align-items: center;
+    margin-top: var(--element-separation);
 }
+
+.selectsContainer div{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.selectsContainer div:last-child{
+    margin-right: 0px;
+}
+
+.selectsContainer select{
+    border: 1px solid var(--one);
+    padding: 5px;
+}
+
+/* SEARCH BUTTON */
+
+.searchButton{
+    margin-top: var(--element-separation);
+    width: 100%;
+}
+
+/* RESULT */
 
 .resultTitle{
     font-weight: bold;
@@ -20,11 +85,6 @@
 
 .linesContainer p{
     margin: 0;
-}
-
-select, button{
-    padding: 5px;
-    margin-right: 10px;
 }
 
 .show{

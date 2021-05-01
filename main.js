@@ -44,9 +44,12 @@ const fetchData = () => {
     Promise.all([sourceTypesFetch, videoTypesFetch, artistsFetch])
         .then(res => Promise.all(res.map(r => r.json())))
         .then(res => {
-            const sourceTypes = res[0];
-            const videoTypes = res[1];
-            const artists = res[2];
+            console.log(res)
+            let data = {};
+            data.sourceTypes = res[0];
+            data.videoTypes = res[1];
+            data.artists = res[2];
+            window.localStorage.setItem('koreanAppData', JSON.stringify(data));
             isDataLoaded = true;
             redirectToHome();
         })

@@ -7,30 +7,47 @@
     <title>Document</title>
     <script src="home.js" type="text/Javascript"></script>
     <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="../shared.css">
 </head>
 <body>
-    <h1>Korean App</h1>
-    <div id="selectContainer">
+    <div class="header">
+        <h1>Korean App</h1>
+        <!--MAIN INPUT-->
         <div class="inputContainer">
-            <input id="wordInput">  
-            <button onclick="inputRandomWord()">Random word</button>
-            <p id="invalidInput" class="hide">Input invalido</p>
+            <input id="wordInput" placeholder="Word to search">  
+            <button onclick="inputRandomWord()">Get a random Korean word</button>
+            <p id="invalidInput" class="invalidInput hide">Invalid input</p>
         </div>
+        <!--SELECTS-->
         <div class="selectsContainer">
-            <select id="sourceSelect"></select>  
-            <select id="artistSelect"></select>
-            <select id="videoSelect"></select>  
+            <div>
+                <label>Source</label>
+                <select id="sourceSelect"></select> 
+            </div>
+            <div>
+                <label>Artist</label>
+                <select id="artistSelect"></select>
+            </div>
+            <div>
+                <label>Source type</label>
+                <select id="videoSelect" disabled></select>  
+            </div>
         </div>
-        <button id="searchButton" onclick="search()">Search</button>
+        <!--SEARCH BUTTON-->
+        <button id="searchButton" class="searchButton" onclick="search()">Search</button>
     </div>
-    <p id="searchUrl" class="hide"></p>
     <div>
-        <div id="loadingResults" class="hide">
-            <p>Loading...</p>
-        </div>
-        <div id="searchResultContainer" class="hide"></div>
-        <div id="noResults" class="hide">
-            <p>No results</p>
+        <!--ENDPOINT URL-->
+        <p id="searchUrl" class="hide"></p>
+        <!--RESULTS-->
+        <div>
+            <div id="loadingResults" class="hide">
+                <p>Loading...</p>
+            </div>
+            <div id="searchResultContainer" class="hide"></div>
+            <div id="noResults" class="hide">
+                <p>No results</p>
+            </div>
         </div>
     </div>
 </body>
