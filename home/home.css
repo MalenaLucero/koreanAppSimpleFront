@@ -9,8 +9,8 @@ body{
     width: 400px;
 }
 
-h1{
-    text-align: center;
+.title-container{
+    margin-bottom: var(--element-separation)
 }
 
 /* INPUT CONTAINER */
@@ -74,6 +74,33 @@ h1{
 }
 
 /* RESULT */
+
+.resultsWrapper{
+    width: 100vw;
+}
+
+.endpoint{
+    margin-top: var(--element-separation);
+    text-align: center;
+}
+
+.searchResultContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.searchResultContainer > div{
+    background-color: var(--three);
+    margin-right: 20px;
+    padding: 10px;
+    margin-top: var(--element-separation);
+}
+
+.searchResultContainer > div:last-child{
+    margin-right: 0;
+}
 
 .resultTitle{
     font-weight: bold;

@@ -11,7 +11,10 @@
 </head>
 <body>
     <div class="header">
-        <h1>Korean App</h1>
+        <!--TITLE-->
+        <div class="title-container">
+            <h1>Explore Korean</h1>
+        </div>
         <!--MAIN INPUT-->
         <div class="inputContainer">
             <input id="wordInput" placeholder="Word to search">  
@@ -36,15 +39,12 @@
         <!--SEARCH BUTTON-->
         <button id="searchButton" class="searchButton" onclick="search()">Search</button>
     </div>
-    <div>
+    <div class="resultsWrapper">
         <!--ENDPOINT URL-->
-        <p id="searchUrl" class="hide"></p>
+        <p id="searchUrl" class="endpoint hide"></p>
         <!--RESULTS-->
         <div>
-            <div id="loadingResults" class="hide">
-                <p>Loading...</p>
-            </div>
-            <div id="searchResultContainer" class="hide"></div>
+            <div id="searchResultContainer" class="searchResultContainer hide"></div>
             <div id="noResults" class="hide">
                 <p>No results</p>
             </div>

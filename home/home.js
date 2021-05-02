@@ -74,7 +74,6 @@ const search = () => {
     if(word.length === 0){
         showElement("invalidInput");
     } else {
-        showElement("loadingResults");
         hideElement("searchResultContainer");
         const artist = document.getElementById("artistSelect").value;
         const source = document.getElementById("sourceSelect").value.toLowerCase();
@@ -102,11 +101,10 @@ const showSearchUrl = (url) => {
 const showSearchResult = (data) => {
     console.log(data)
     innerHTMLCleaner("searchResultContainer");
-    hideElement("noResults");
-    hideElement("loadingResults");
+    //hideElement("noResults");
     const container = document.getElementById("searchResultContainer");
     if(data.length === 0){
-        showElement("noResults")
+        //showElement("noResults")
     } else {
         data.forEach(e => {
             const result = document.createElement("div");
@@ -136,7 +134,7 @@ const showSearchResult = (data) => {
 
 const showElement = (id) =>{
     const element = document.getElementById(id)
-    element.classList.replace('hide', 'show')
+    element.classList.remove('hide')
 }
 
 const hideElement = (id) =>{
