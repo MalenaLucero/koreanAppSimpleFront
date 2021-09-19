@@ -75,6 +75,8 @@ const search = () => {
         showElement("invalidInput");
     } else {
         hideElement("searchResultContainer");
+        showElement("loading");
+        hideElement("noResults");
         const artist = document.getElementById("artistSelect").value;
         const source = document.getElementById("sourceSelect").value.toLowerCase();
         const video = document.getElementById("videoSelect").value;
@@ -86,7 +88,10 @@ const search = () => {
 
         fetch(searchUrl)
             .then(res => res.json())
-            .then(data => showSearchResult(data))
+            .then(data => {
+                hideElement("loading")
+                showSearchResult(data) 
+            })
     }
 }
 
@@ -101,10 +106,9 @@ const showSearchUrl = (url) => {
 const showSearchResult = (data) => {
     console.log(data)
     innerHTMLCleaner("searchResultContainer");
-    //hideElement("noResults");
     const container = document.getElementById("searchResultContainer");
     if(data.length === 0){
-        //showElement("noResults")
+        showElement("noResults")
     } else {
         data.forEach(e => {
             const result = document.createElement("div");
@@ -134,7 +138,7 @@ const showSearchResult = (data) => {
 
 const showElement = (id) =>{
     const element = document.getElementById(id)
-    element.classList.remove('hide')
+    element.classList.replace('hide', 'show')
 }
 
 const hideElement = (id) =>{

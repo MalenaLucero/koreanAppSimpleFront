@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="home.js" type="text/Javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="home.css">
     <link rel="stylesheet" type="text/css" href="../shared.css">
 </head>
@@ -17,27 +18,27 @@
         </div>
         <!--MAIN INPUT-->
         <div class="inputContainer">
-            <input id="wordInput" placeholder="Word to search">  
-            <button onclick="inputRandomWord()">Get a random Korean word</button>
+            <input type="text" class="form-control" id="wordInput" placeholder="Word to search">  
+            <button type="button" class="inputButton" onclick="inputRandomWord()">Get a random Korean word</button>
             <p id="invalidInput" class="invalidInput hide">Invalid input</p>
         </div>
         <!--SELECTS-->
         <div class="selectsContainer">
             <div>
                 <label>Source</label>
-                <select id="sourceSelect"></select> 
+                <select class="form-select" id="sourceSelect"></select> 
             </div>
             <div>
                 <label>Artist</label>
-                <select id="artistSelect"></select>
+                <select class="form-select" id="artistSelect"></select>
             </div>
             <div>
                 <label>Source type</label>
-                <select id="videoSelect" disabled></select>  
+                <select class="form-select" id="videoSelect" disabled></select>  
             </div>
         </div>
         <!--SEARCH BUTTON-->
-        <button id="searchButton" class="searchButton" onclick="search()">Search</button>
+        <button id="searchButton" class="searchButton" type="button" onclick="search()">Search</button>
     </div>
     <div class="resultsWrapper">
         <!--ENDPOINT URL-->
@@ -45,10 +46,14 @@
         <!--RESULTS-->
         <div>
             <div id="searchResultContainer" class="searchResultContainer hide"></div>
-            <div id="noResults" class="hide">
+            <div id="loading" class="hide searchResultMessage">
+                <p>Loading...</p>
+            </div>
+            <div id="noResults" class="hide searchResultMessage">
                 <p>No results</p>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>

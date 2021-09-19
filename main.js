@@ -15,6 +15,9 @@ window.onload = () => {
 }; 
 
 const initialize = () => {
+    for (let i = 0; i < 4; i++) {
+        const sourceTypesFetch = fetch(url + "/sourceTypes");
+    }
     const wordSlot = document.getElementById('wordSlot')
     let delayToAppear = 0;
     let delayToDisappear = delayUnit;
