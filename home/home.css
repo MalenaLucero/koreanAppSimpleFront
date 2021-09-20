@@ -107,10 +107,22 @@ body{
     text-align: center;
 }
 
+@media(max-width: 600px) {
+    .endpoint{
+        margin: 20px;
+    }
+}
+
 .searchResultContainer{
     margin: 20px 40px;
     display: flex;
     flex-direction: column;
+}
+
+@media(max-width: 600px) {
+    .searchResultContainer{
+        margin: 20px 20px;
+    }
 }
 
 .searchResultContainer > div{
