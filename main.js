@@ -1,7 +1,6 @@
 const url = "https://koreanapp.herokuapp.com/api/public";
 const host = window.location.href.replace('/index.html', '');
 const words = ['Learn', 'Remember', 'Understand', 'Explore'];
-let isMainLoaderFinished = false;
 let isDataLoaded = false;
 const delayUnit = 1000;
 
@@ -9,10 +8,23 @@ window.onload = () => {
     initialize();
     fetchData();
     setTimeout(() => {
-        isMainLoaderFinished = true;
-        redirectToHome();
+        if(isDataLoaded) {
+            window.location.href = host + "/home/home.html"
+        } else {
+            showElement('refreshMessage')
+        }
     }, delayUnit*words.length*2)
 }; 
+
+const showElement = (id) =>{
+    const element = document.getElementById(id)
+    element.classList.replace('visibility-hidden', 'visibility-visible')
+}
+
+const hideElement = (id) =>{
+    const element = document.getElementById(id)
+    element.classList.replace('visibility-visible', 'visibility-hidden')
+}
 
 const initialize = () => {
     for (let i = 0; i < 4; i++) {
@@ -59,12 +71,6 @@ const fetchData = () => {
         .catch(err => {
             console.log(err)   
         })
-}
-
-const redirectToHome = () => {
-    if(isMainLoaderFinished && isDataLoaded){
-        window.location.href = host + "/home/home.html"
-    }
 }
 
 const makeVisible = (element, word, delay) => {

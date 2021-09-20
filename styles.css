@@ -1,6 +1,7 @@
 body{
     height: 90vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -8,11 +9,28 @@ body{
 .title-container{
     display: flex;
     justify-content: center;
+    position: relative;
+}
+
+.title-container h1{
+    text-align: center;
+}
+
+.refresh-message{
+    width: 250px;
+    position: absolute;
+    text-align: center;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 
 @media(max-width: 700px){
     .title-container{
         flex-direction: column;
+    }
+    .refresh-message{
+        top: 150px;
     }
 }
 
@@ -27,7 +45,7 @@ body{
 }
 
 h1{
-    margin: 0 0 0 10px;
+    margin: 0px 10px;
     padding: 10px;
 }
 
@@ -43,4 +61,12 @@ h1{
 
 .word-slot-container{
     background-color: var(--two);
+}
+
+.visibility-hidden{
+    visibility: hidden;
+}
+
+.visibility-visible{
+    visibility: visible;
 }

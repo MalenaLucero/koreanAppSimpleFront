@@ -109,10 +109,10 @@ body{
 
 .searchResultContainer > div{
     background-color: var(--three);
-    margin-right: 20px;
     padding: 10px;
     margin-top: var(--element-separation);
     border-radius: 5px;
+    text-align: center;
 }
 
 .searchResultContainer > div:last-child{
